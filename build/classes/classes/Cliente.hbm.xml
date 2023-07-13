@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/05/2018 22:38:49 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="classes.Cliente" table="cliente" catalog="banco" optimistic-lock="version">
+        <id name="idCliente" type="java.lang.Integer">
+            <column name="id_cliente" />
+            <generator class="identity" />
+        </id>
+        <property name="cpf" type="string">
+            <column name="CPF" length="45" not-null="true" />
+        </property>
+        <property name="nome" type="string">
+            <column name="NOME" length="45" not-null="true" />
+        </property>
+        <property name="rg" type="string">
+            <column name="RG" length="45" not-null="true" />
+        </property>
+        <property name="emissor" type="string">
+            <column name="EMISSOR" length="45" not-null="true" />
+        </property>
+        <property name="expedicao" type="string">
+            <column name="EXPEDICAO" length="45" not-null="true" />
+        </property>
+        <property name="nascimento" type="string">
+            <column name="NASCIMENTO" length="45" not-null="true" />
+        </property>
+        <property name="pai" type="string">
+            <column name="PAI" length="45" not-null="true" />
+        </property>
+        <property name="mae" type="string">
+            <column name="MAE" length="45" not-null="true" />
+        </property>
+        <property name="naturalidade" type="string">
+            <column name="NATURALIDADE" length="45" not-null="true" />
+        </property>
+        <property name="nacionalidade" type="string">
+            <column name="NACIONALIDADE" length="45" not-null="true" />
+        </property>
+        <property name="sexo" type="string">
+            <column name="SEXO" length="45" not-null="true" />
+        </property>
+        <property name="estadoCivil" type="string">
+            <column name="`ESTADO CIVIL`" length="45" not-null="true" />
+        </property>
+        <property name="profissao" type="string">
+            <column name="PROFISSAO" length="45" not-null="true" />
+        </property>
+        <property name="rua" type="string">
+            <column name="RUA" length="45" not-null="true" />
+        </property>
+        <property name="complemento" type="string">
+            <column name="COMPLEMENTO" length="45" />
+        </property>
+        <property name="bairro" type="string">
+            <column name="BAIRRO" length="45" not-null="true" />
+        </property>
+        <property name="cidade" type="string">
+            <column name="CIDADE" length="45" not-null="true" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="45" not-null="true" />
+        </property>
+        <property name="cep" type="string">
+            <column name="CEP" length="45" not-null="true" />
+        </property>
+        <property name="telefone" type="string">
+            <column name="TELEFONE" length="45" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="45" />
+        </property>
+        <set name="transferencias" table="transferencia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Cliente_destino" not-null="true" />
+            </key>
+            <one-to-many class="classes.Transferencia" />
+        </set>
+        <set name="contas" table="conta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_Cliente" not-null="true" />
+            </key>
+            <one-to-many class="classes.Conta" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/05/2018 22:38:49 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="classes.Conta" table="conta" catalog="banco" optimistic-lock="version">
+        <id name="idConta" type="java.lang.Integer">
+            <column name="id_Conta" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="agencia" class="classes.Agencia" fetch="select">
+            <column name="id_Agencia" not-null="true" />
+        </many-to-one>
+        <many-to-one name="cliente" class="classes.Cliente" fetch="select">
+            <column name="id_Cliente" not-null="true" />
+        </many-to-one>
+        <property name="valor" type="float">
+            <column name="Valor" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="senha" type="string">
+            <column name="Senha" length="45" not-null="true" />
+        </property>
+        <set name="transferenciasForContaDestino" table="transferencia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Conta_destino" not-null="true" />
+            </key>
+            <one-to-many class="classes.Transferencia" />
+        </set>
+        <set name="transferenciasForAgenciaDestino" table="transferencia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Agencia_destino" not-null="true" />
+            </key>
+            <one-to-many class="classes.Transferencia" />
+        </set>
+    </class>
+</hibernate-mapping>
