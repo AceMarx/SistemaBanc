@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/05/2018 22:38:49 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="classes.Extrato" table="extrato" catalog="banco" optimistic-lock="version">
+        <id name="idExtrato" type="java.lang.Integer">
+            <column name="idExtrato" />
+            <generator class="identity" />
+        </id>
+        <property name="descricao" type="string">
+            <column name="Descricao" length="45" />
+        </property>
+        <property name="valor" type="float">
+            <column name="Valor" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="servico" type="string">
+            <column name="Servico" length="45" not-null="true" />
+        </property>
+        <property name="data" type="date">
+            <column name="Data" length="10" not-null="true" />
+        </property>
+        <property name="conta" type="int">
+            <column name="Conta" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
